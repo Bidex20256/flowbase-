@@ -167,7 +167,7 @@
 
   /* Active section nav highlighting -------------------------------------- */
 
-  var sectionIds = ["product", "solutions", "resources", "pricing"];
+  var sectionIds = ["product", "features", "pricing", "customers", "faq"];
   var navLinks = document.querySelectorAll("[data-nav]");
 
   function setActiveNav(id) {

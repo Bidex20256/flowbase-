@@ -26,15 +26,16 @@
       <nav class="nav-desktop" aria-label="Primary">
         <ul class="nav-list">
           <li><a href="#product" data-nav>Product</a></li>
-          <li><a href="#solutions" data-nav>Solutions</a></li>
-          <li><a href="#resources" data-nav>Resources</a></li>
+          <li><a href="#features" data-nav>Features</a></li>
           <li><a href="#pricing" data-nav>Pricing</a></li>
+          <li><a href="#customers" data-nav>Customers</a></li>
+          <li><a href="#faq" data-nav>FAQ</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <a class="link-quiet" href="#login">Log in</a>
-        <a class="btn btn-primary btn-sm" href="#cta">Start free</a>
+        <a class="link-quiet" href="login.html">Log in</a>
+        <a class="btn btn-primary btn-sm" href="#cta">Start for free</a>
         <button
           class="nav-toggle"
           type="button"
@@ -51,11 +52,12 @@
     <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile" hidden aria-hidden="true">
       <ul class="nav-mobile-list">
         <li><a href="#product" data-nav>Product</a></li>
-        <li><a href="#solutions" data-nav>Solutions</a></li>
-        <li><a href="#resources" data-nav>Resources</a></li>
+        <li><a href="#features" data-nav>Features</a></li>
         <li><a href="#pricing" data-nav>Pricing</a></li>
-        <li><a href="#login">Log in</a></li>
-        <li><a class="btn btn-primary" href="#cta">Start free</a></li>
+        <li><a href="#customers" data-nav>Customers</a></li>
+        <li><a href="#faq" data-nav>FAQ</a></li>
+        <li><a href="login.html">Log in</a></li>
+        <li><a class="btn btn-primary" href="#cta">Start for free</a></li>
       </ul>
     </nav>
   </header>
@@ -486,7 +488,7 @@
     </section>
 
     <!-- FEATURES -->
-    <section class="features" id="resources">
+    <section class="features" id="features">
       <div class="container">
         <div class="features-head reveal">
           <p class="eyebrow">Capabilities</p>
@@ -541,7 +543,7 @@
     </section>
 
     <!-- CUSTOMER STORIES -->
-    <section class="stories" aria-labelledby="stories-heading">
+    <section class="stories" id="customers" aria-labelledby="stories-heading">
       <div class="container">
         <div class="stories-head reveal">
           <p class="eyebrow">Customer stories</p>
@@ -1066,54 +1068,95 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
+    <div class="container footer-top">
       <div class="footer-brand">
         <a class="logo" href="#top" aria-label="Flowbase home">
           <span class="logo-mark" aria-hidden="true"></span>
           <span class="logo-text">Flowbase</span>
         </a>
-        <p class="footer-tagline">Project management, redefined.</p>
+        <p class="footer-tagline">
+          Project management for teams who want clarity, not clutter.
+          Plan, assign, and ship from one focused workspace.
+        </p>
+        <ul class="footer-social" aria-label="Social">
+          <li>
+            <a href="https://www.linkedin.com/company/flowbase" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://x.com/flowbase" rel="noopener noreferrer" target="_blank">X</a>
+          </li>
+          <li>
+            <a href="https://github.com/flowbase" rel="noopener noreferrer" target="_blank">GitHub</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@flowbase" rel="noopener noreferrer" target="_blank">YouTube</a>
+          </li>
+        </ul>
       </div>
 
-      <nav class="footer-col" aria-label="Product">
-        <h3 class="footer-heading">Product</h3>
-        <ul>
-          <li><a href="#product">Features</a></li>
-          <li><a href="#solutions">Integrations</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#resources">Changelog</a></li>
-        </ul>
-      </nav>
+      <div class="footer-navs">
+        <nav class="footer-col" aria-label="Product">
+          <h3 class="footer-heading">Product</h3>
+          <ul>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#customers">Customers</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
 
-      <nav class="footer-col" aria-label="Company">
-        <h3 class="footer-heading">Company</h3>
-        <ul>
-          <li><a href="#top">About</a></li>
-          <li><a href="#top">Careers</a></li>
-          <li><a href="#top">Contact</a></li>
-        </ul>
-      </nav>
+        <nav class="footer-col" aria-label="Company">
+          <h3 class="footer-heading">Company</h3>
+          <ul>
+            <li><a href="#solutions">About</a></li>
+            <li><a href="mailto:careers@flowbase.io">Careers</a></li>
+            <li><a href="mailto:hello@flowbase.io">Contact</a></li>
+            <li><a href="login.html">Log in</a></li>
+          </ul>
+        </nav>
 
-      <nav class="footer-col" aria-label="Resources">
-        <h3 class="footer-heading">Resources</h3>
-        <ul>
-          <li><a href="#resources">Documentation</a></li>
-          <li><a href="#resources">Blog</a></li>
-          <li><a href="#faq">Help center</a></li>
-        </ul>
-      </nav>
+        <nav class="footer-col" aria-label="Resources">
+          <h3 class="footer-heading">Resources</h3>
+          <ul>
+            <li><a href="https://docs.flowbase.io" rel="noopener noreferrer" target="_blank">Documentation</a></li>
+            <li><a href="https://blog.flowbase.io" rel="noopener noreferrer" target="_blank">Blog</a></li>
+            <li><a href="#faq">Help center</a></li>
+            <li><a href="https://status.flowbase.io" rel="noopener noreferrer" target="_blank">Status</a></li>
+          </ul>
+        </nav>
 
-      <nav class="footer-col" aria-label="Legal">
-        <h3 class="footer-heading">Legal</h3>
-        <ul>
-          <li><a href="#top">Privacy</a></li>
-          <li><a href="#top">Terms</a></li>
-        </ul>
-      </nav>
+        <nav class="footer-col" aria-label="Legal">
+          <h3 class="footer-heading">Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col footer-contact" aria-label="Contact">
+          <h3 class="footer-heading">Contact</h3>
+          <ul>
+            <li>
+              <a href="mailto:hello@flowbase.io">hello@flowbase.io</a>
+            </li>
+            <li>
+              <a href="mailto:support@flowbase.io">support@flowbase.io</a>
+            </li>
+            <li>
+              <span class="footer-note">Mon–Fri · 9:00–18:00 GMT</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+
     <div class="container footer-bottom">
       <p>&copy; 2026 Flowbase. All rights reserved.</p>
-      <a class="link-quiet" id="login" href="#cta" aria-label="Log in to Flowbase">Log in</a>
+      <ul class="footer-legal-inline">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
     </div>
   </footer>
 
