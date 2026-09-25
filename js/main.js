@@ -813,4 +813,131 @@
       });
     });
   }
+
+  /* Customer stories ----------------------------------------------------- */
+
+  var storyTabs = document.querySelectorAll(".stories-tab");
+  var storyPanels = document.querySelectorAll(".story-panel");
+  var storiesTablist = document.querySelector(".stories-tabs");
+  var storiesPrev = document.getElementById("stories-prev");
+  var storiesNext = document.getElementById("stories-next");
+  var storiesStatus = document.getElementById("stories-status");
+  var storyIndex = 0;
+
+  function updateStoriesOrientation() {
+    if (!storiesTablist) return;
+    storiesTablist.setAttribute(
+      "aria-orientation",
+      window.innerWidth <= 768 ? "horizontal" : "vertical"
+    );
+  }
+
+  function showStory(index, options) {
+    if (!storyTabs.length || !storyPanels.length) return;
+
+    var total = storyTabs.length;
+    var nextIndex = ((index % total) + total) % total;
+    var opts = options || {};
+    storyIndex = nextIndex;
+
+    storyTabs.forEach(function (tab, i) {
+      var active = i === nextIndex;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", String(active));
+      tab.setAttribute("tabindex", active ? "0" : "-1");
+    });
+
+    storyPanels.forEach(function (panel, i) {
+      var active = i === nextIndex;
+      panel.classList.toggle("is-active", active);
+      panel.classList.remove("is-entering", "is-visible");
+
+      if (active) {
+        panel.removeAttribute("hidden");
+
+        if (!prefersReducedMotion() && !opts.instant) {
+          panel.classList.add("is-entering");
+          window.requestAnimationFrame(function () {
+            panel.classList.add("is-visible");
+            panel.classList.remove("is-entering");
+          });
+        }
+      } else {
+        panel.setAttribute("hidden", "");
+      }
+    });
+
+    if (storiesStatus) {
+      storiesStatus.textContent = nextIndex + 1 + " of " + total;
+    }
+
+    if (storiesPrev) {
+      storiesPrev.disabled = nextIndex === 0;
+    }
+    if (storiesNext) {
+      storiesNext.disabled = nextIndex === total - 1;
+    }
+
+    if (opts.focusTab && storyTabs[nextIndex]) {
+      storyTabs[nextIndex].focus();
+    }
+  }
+
+  if (storyTabs.length) {
+    updateStoriesOrientation();
+    window.addEventListener("resize", updateStoriesOrientation);
+
+    showStory(0, { instant: true });
+
+    storyTabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () {
+        showStory(index);
+      });
+
+      tab.addEventListener("keydown", function (event) {
+        var tabsArr = Array.prototype.slice.call(storyTabs);
+        var current = tabsArr.indexOf(tab);
+        var next = null;
+        var orientation =
+          storiesTablist && storiesTablist.getAttribute("aria-orientation");
+        var forwardKey = orientation === "horizontal" ? "ArrowRight" : "ArrowDown";
+        var backKey = orientation === "horizontal" ? "ArrowLeft" : "ArrowUp";
+
+        if (event.key === forwardKey) {
+          next = tabsArr[(current + 1) % tabsArr.length];
+        } else if (event.key === backKey) {
+          next = tabsArr[(current - 1 + tabsArr.length) % tabsArr.length];
+        } else if (event.key === "Home") {
+          next = tabsArr[0];
+        } else if (event.key === "End") {
+          next = tabsArr[tabsArr.length - 1];
+        } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+          if (orientation === "vertical") {
+            if (event.key === "ArrowRight") {
+              next = tabsArr[(current + 1) % tabsArr.length];
+            } else {
+              next = tabsArr[(current - 1 + tabsArr.length) % tabsArr.length];
+            }
+          }
+        }
+
+        if (next) {
+          event.preventDefault();
+          showStory(tabsArr.indexOf(next), { focusTab: true });
+        }
+      });
+    });
+
+    if (storiesPrev) {
+      storiesPrev.addEventListener("click", function () {
+        showStory(storyIndex - 1);
+      });
+    }
+
+    if (storiesNext) {
+      storiesNext.addEventListener("click", function () {
+        showStory(storyIndex + 1);
+      });
+    }
+  }
 })();

@@ -540,24 +540,154 @@
       </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="testimonial" aria-labelledby="testimonial-heading">
-      <div class="container testimonial-inner reveal">
-        <h2 id="testimonial-heading" class="visually-hidden">Customer testimonial</h2>
-        <blockquote class="quote">
-          <p>
-            “Flowbase gave our team a single place to plan, execute, and
-            understand our work. We spend less time managing projects and
-            more time building.”
-          </p>
-          <footer class="quote-meta">
-            <span class="avatar lg avatar-e" aria-hidden="true">NS</span>
-            <div>
-              <cite class="quote-name">Nora Singh</cite>
-              <p class="quote-role">Head of Product, Vertex Labs</p>
-            </div>
-          </footer>
-        </blockquote>
+    <!-- CUSTOMER STORIES -->
+    <section class="stories" aria-labelledby="stories-heading">
+      <div class="container">
+        <div class="stories-head reveal">
+          <p class="eyebrow">Customer stories</p>
+          <h2 class="section-title" id="stories-heading">Teams who plan with Flowbase.</h2>
+        </div>
+
+        <div class="stories-layout reveal">
+          <div
+            class="stories-tabs"
+            role="tablist"
+            aria-label="Choose a customer story"
+            aria-orientation="vertical"
+          >
+            <button
+              type="button"
+              class="stories-tab is-active"
+              role="tab"
+              id="story-tab-1"
+              aria-selected="true"
+              aria-controls="story-panel-1"
+              tabindex="0"
+              data-story="0"
+            >
+              <span class="stories-tab-index" aria-hidden="true">01</span>
+              <span class="stories-tab-body">
+                <span class="stories-tab-company">Vertex Labs</span>
+                <span class="stories-tab-cat">Product</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="stories-tab"
+              role="tab"
+              id="story-tab-2"
+              aria-selected="false"
+              aria-controls="story-panel-2"
+              tabindex="-1"
+              data-story="1"
+            >
+              <span class="stories-tab-index" aria-hidden="true">02</span>
+              <span class="stories-tab-body">
+                <span class="stories-tab-company">Northline</span>
+                <span class="stories-tab-cat">Engineering</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="stories-tab"
+              role="tab"
+              id="story-tab-3"
+              aria-selected="false"
+              aria-controls="story-panel-3"
+              tabindex="-1"
+              data-story="2"
+            >
+              <span class="stories-tab-index" aria-hidden="true">03</span>
+              <span class="stories-tab-body">
+                <span class="stories-tab-company">Fieldwork</span>
+                <span class="stories-tab-cat">Operations</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="stories-panels">
+            <article
+              class="story-panel is-active"
+              role="tabpanel"
+              id="story-panel-1"
+              aria-labelledby="story-tab-1"
+            >
+              <p class="story-label">Product · Software</p>
+              <blockquote class="quote">
+                <p>
+                  “Flowbase gave our team a single place to plan, execute, and
+                  understand our work. We spend less time chasing status and
+                  more time shipping.”
+                </p>
+                <footer class="quote-meta">
+                  <span class="avatar lg avatar-e" aria-hidden="true">NS</span>
+                  <div>
+                    <cite class="quote-name">Nora Singh</cite>
+                    <p class="quote-role">Head of Product, Vertex Labs</p>
+                  </div>
+                </footer>
+              </blockquote>
+            </article>
+
+            <article
+              class="story-panel"
+              role="tabpanel"
+              id="story-panel-2"
+              aria-labelledby="story-tab-2"
+              hidden
+            >
+              <p class="story-label">Engineering · Infrastructure</p>
+              <blockquote class="quote">
+                <p>
+                  “Ownership used to live in three different tools. With Flowbase,
+                  every task has a clear owner and deadline—so handoffs stop
+                  getting lost.”
+                </p>
+                <footer class="quote-meta">
+                  <span class="avatar lg avatar-b" aria-hidden="true">MC</span>
+                  <div>
+                    <cite class="quote-name">Marcus Chen</cite>
+                    <p class="quote-role">Engineering Manager, Northline</p>
+                  </div>
+                </footer>
+              </blockquote>
+            </article>
+
+            <article
+              class="story-panel"
+              role="tabpanel"
+              id="story-panel-3"
+              aria-labelledby="story-tab-3"
+              hidden
+            >
+              <p class="story-label">Operations · Services</p>
+              <blockquote class="quote">
+                <p>
+                  “We needed a workspace the whole ops team could follow without
+                  weekly check-in theater. Flowbase keeps priorities visible
+                  and conversations tied to the work.”
+                </p>
+                <footer class="quote-meta">
+                  <span class="avatar lg avatar-a" aria-hidden="true">PO</span>
+                  <div>
+                    <cite class="quote-name">Priya Okonkwo</cite>
+                    <p class="quote-role">Operations Lead, Fieldwork</p>
+                  </div>
+                </footer>
+              </blockquote>
+            </article>
+          </div>
+        </div>
+
+        <div class="stories-controls reveal">
+          <button type="button" class="stories-control" id="stories-prev" aria-label="Previous customer story">
+            Previous
+          </button>
+          <p class="stories-status" id="stories-status" aria-live="polite">1 of 3</p>
+          <button type="button" class="stories-control" id="stories-next" aria-label="Next customer story">
+            Next
+          </button>
+        </div>
       </div>
     </section>
 
