@@ -561,11 +561,140 @@
       </div>
     </section>
 
-    <!-- PRICING CTA -->
+    <!-- PRICING -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="pricing-head reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2 class="section-title" id="pricing-heading">Plans that scale with your team.</h2>
+          <p class="section-body">
+            Start free, then choose the workspace that fits how you ship.
+            Every plan includes core project management.
+          </p>
+        </div>
+
+        <div class="pricing-billing reveal">
+          <div class="pricing-toggle" role="group" aria-label="Billing period">
+            <button
+              type="button"
+              class="pricing-toggle-btn is-active"
+              data-billing="monthly"
+              aria-pressed="true"
+            >
+              Monthly
+            </button>
+            <button
+              type="button"
+              class="pricing-toggle-btn"
+              data-billing="yearly"
+              aria-pressed="false"
+            >
+              Yearly
+            </button>
+          </div>
+          <p class="pricing-save" id="pricing-save" hidden>
+            Save 20% with yearly billing
+          </p>
+          <p class="visually-hidden" id="pricing-live" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <header class="price-card-head">
+              <h3 class="price-name">Starter</h3>
+              <p class="price-desc">For individuals and small teams getting organized.</p>
+            </header>
+            <div class="price-cost">
+              <p class="price-figure">
+                <span class="price-currency">$</span>
+                <span
+                  class="price-amount"
+                  data-monthly="12"
+                  data-yearly="10"
+                >12</span>
+                <span class="price-period">
+                  <span class="price-per">/month</span>
+                  <span class="price-billed" hidden>billed yearly</span>
+                </span>
+              </p>
+            </div>
+            <ul class="price-features">
+              <li>Up to 5 members</li>
+              <li>3 active projects</li>
+              <li>Task lists &amp; deadlines</li>
+              <li>Basic reporting</li>
+              <li>Email support</li>
+            </ul>
+            <a class="btn btn-ghost price-cta" href="#cta">Start free trial</a>
+          </article>
+
+          <article class="price-card price-card-featured reveal" aria-labelledby="plan-pro">
+            <p class="price-badge">Recommended</p>
+            <header class="price-card-head">
+              <h3 class="price-name" id="plan-pro">Professional</h3>
+              <p class="price-desc">For growing teams that need clarity across every project.</p>
+            </header>
+            <div class="price-cost">
+              <p class="price-figure">
+                <span class="price-currency">$</span>
+                <span
+                  class="price-amount"
+                  data-monthly="29"
+                  data-yearly="23"
+                >29</span>
+                <span class="price-period">
+                  <span class="price-per">/month</span>
+                  <span class="price-billed" hidden>billed yearly</span>
+                </span>
+              </p>
+            </div>
+            <ul class="price-features">
+              <li>Up to 25 members</li>
+              <li>Unlimited projects</li>
+              <li>Timeline &amp; board views</li>
+              <li>Advanced analytics</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn-primary price-cta" href="#cta">Start free trial</a>
+          </article>
+
+          <article class="price-card reveal">
+            <header class="price-card-head">
+              <h3 class="price-name">Business</h3>
+              <p class="price-desc">For organizations that need control, scale, and oversight.</p>
+            </header>
+            <div class="price-cost">
+              <p class="price-figure">
+                <span class="price-currency">$</span>
+                <span
+                  class="price-amount"
+                  data-monthly="59"
+                  data-yearly="47"
+                >59</span>
+                <span class="price-period">
+                  <span class="price-per">/month</span>
+                  <span class="price-billed" hidden>billed yearly</span>
+                </span>
+              </p>
+            </div>
+            <ul class="price-features">
+              <li>Unlimited members</li>
+              <li>Unlimited projects</li>
+              <li>Admin controls &amp; SSO</li>
+              <li>Custom reporting</li>
+              <li>Dedicated support</li>
+            </ul>
+            <a class="btn btn-ghost price-cta" href="#cta">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
     <section class="cta" id="cta">
       <div class="container cta-inner reveal">
         <p class="eyebrow">Get started</p>
-        <h2 class="cta-title" id="pricing">Your next project starts here.</h2>
+        <h2 class="cta-title">Your next project starts here.</h2>
         <p class="cta-body">
           Bring your team, projects, and priorities into one focused workspace.
         </p>

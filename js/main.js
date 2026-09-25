@@ -726,4 +726,91 @@
       });
     });
   });
+
+  /* Pricing billing toggle ----------------------------------------------- */
+
+  var billingButtons = document.querySelectorAll(".pricing-toggle-btn");
+  var priceAmounts = document.querySelectorAll(".price-amount");
+  var priceBilled = document.querySelectorAll(".price-billed");
+  var pricingSave = document.getElementById("pricing-save");
+  var pricingLive = document.getElementById("pricing-live");
+
+  function setBilling(period) {
+    if (period !== "monthly" && period !== "yearly") return;
+    var isYearly = period === "yearly";
+
+    billingButtons.forEach(function (btn) {
+      var active = btn.getAttribute("data-billing") === period;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+
+    priceAmounts.forEach(function (el) {
+      var next = el.getAttribute(isYearly ? "data-yearly" : "data-monthly");
+      if (!next || el.textContent === next) return;
+
+      if (prefersReducedMotion()) {
+        el.textContent = next;
+        return;
+      }
+
+      el.classList.add("is-updating");
+      window.setTimeout(function () {
+        el.textContent = next;
+        el.classList.remove("is-updating");
+      }, 120);
+    });
+
+    priceBilled.forEach(function (el) {
+      if (isYearly) {
+        el.removeAttribute("hidden");
+      } else {
+        el.setAttribute("hidden", "");
+      }
+    });
+
+    if (pricingSave) {
+      if (isYearly) {
+        pricingSave.removeAttribute("hidden");
+      } else {
+        pricingSave.setAttribute("hidden", "");
+      }
+    }
+
+    if (pricingLive) {
+      pricingLive.textContent = isYearly
+        ? "Yearly billing selected. Prices show monthly cost billed yearly. Save 20 percent."
+        : "Monthly billing selected.";
+    }
+  }
+
+  if (billingButtons.length) {
+    billingButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setBilling(btn.getAttribute("data-billing"));
+      });
+
+      btn.addEventListener("keydown", function (event) {
+        var buttons = Array.prototype.slice.call(billingButtons);
+        var index = buttons.indexOf(btn);
+        var next = null;
+
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          next = buttons[(index + 1) % buttons.length];
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          next = buttons[(index - 1 + buttons.length) % buttons.length];
+        } else if (event.key === "Home") {
+          next = buttons[0];
+        } else if (event.key === "End") {
+          next = buttons[buttons.length - 1];
+        }
+
+        if (next) {
+          event.preventDefault();
+          next.focus();
+          setBilling(next.getAttribute("data-billing"));
+        }
+      });
+    });
+  }
 })();
