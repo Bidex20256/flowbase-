@@ -1,0 +1,45 @@
+---
+description: Push to GitHub and deploy Flowbase via Vercel
+alwaysApply: true
+---
+
+# Push and Deploy
+
+After finishing any implementation or meaningful code change in this project, **always commit and push to deploy** unless the user says not to.
+
+Also run this workflow when the user asks to push, deploy, ship, or publish.
+
+## Project targets
+
+- **Git remote:** `origin` → `https://github.com/Bidex20256/flowbase-.git`
+- **Branch:** `main` (tracks `origin/main`)
+- **Live site:** https://flowbase-tau.vercel.app
+- **Deploy path:** Push to `main` → Vercel auto-deploys from GitHub
+
+## When to push
+
+- After completing a feature, fix, polish, or responsive/design change
+- When the user says push / deploy / ship / publish
+- Do **not** leave finished work unpushed
+
+## Workflow
+
+1. Run in parallel: `git status`, `git diff` (staged + unstaged), `git log -5 --oneline`
+2. If there are changes:
+   - Stage relevant files (include `.cursor/rules` when updated; never `.env` or secrets)
+   - Commit with a concise message (PowerShell here-string / HEREDOC)
+3. `git push origin main`
+4. Confirm remote is still `Bidex20256/flowbase-`
+5. Tell the user:
+   - GitHub: https://github.com/Bidex20256/flowbase-
+   - Live: https://flowbase-tau.vercel.app
+   - Vercel may take ~30–60s to update
+
+## Rules
+
+- Do **not** force-push to `main` unless explicitly requested
+- Do **not** skip git hooks
+- Do **not** change `git config`
+- Do **not** create a different remote or repo unless asked
+- Prefer `gh` for PRs/issues; use `git push` for deploy
+- Static HTML/CSS/JS — no build step for Vercel

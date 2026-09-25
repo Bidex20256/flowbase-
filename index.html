@@ -60,9 +60,12 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero" id="top">
-      <div class="container">
+      <div class="container hero-layout">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Project management, redefined</p>
+          <div class="hero-kicker">
+            <span class="hero-index" aria-hidden="true">01</span>
+            <p class="eyebrow">Project management, redefined</p>
+          </div>
           <h1 class="hero-title">
             Move work forward.<br />
             Without the busywork.
@@ -115,6 +118,13 @@
                   <div class="tl-bar"><span class="bar-w-72"></span></div>
                 </div>
 
+                <div class="mock-toolbar">
+                  <span class="mock-tab is-active">List</span>
+                  <span class="mock-tab">Board</span>
+                  <span class="mock-tab">Timeline</span>
+                  <span class="mock-toolbar-meta">18 tasks · Updated 2h ago</span>
+                </div>
+
                 <div class="mock-grid">
                   <div class="mock-panel">
                     <div class="mock-panel-head">
@@ -124,22 +134,34 @@
                     <ul class="mock-tasks">
                       <li class="mock-task is-done">
                         <span class="check" aria-hidden="true"></span>
-                        <span>Finalize brand guidelines</span>
+                        <span class="mock-task-main">
+                          <span class="mock-task-name">Finalize brand guidelines</span>
+                          <span class="mock-task-meta">Aisha K. · Sep 12</span>
+                        </span>
                         <span class="tag tag-done">Done</span>
                       </li>
                       <li class="mock-task is-active-task" tabindex="0">
                         <span class="check" aria-hidden="true"></span>
-                        <span>Ship landing page v2</span>
+                        <span class="mock-task-main">
+                          <span class="mock-task-name">Ship landing page v2</span>
+                          <span class="mock-task-meta">Marco L. · Sep 22 · P1</span>
+                        </span>
                         <span class="tag tag-progress">In progress</span>
                       </li>
                       <li class="mock-task" tabindex="0">
                         <span class="check" aria-hidden="true"></span>
-                        <span>QA onboarding flow</span>
+                        <span class="mock-task-main">
+                          <span class="mock-task-name">QA onboarding flow</span>
+                          <span class="mock-task-meta">Jules R. · Sep 24 · P2</span>
+                        </span>
                         <span class="tag tag-review">Review</span>
                       </li>
                       <li class="mock-task" tabindex="0">
                         <span class="check" aria-hidden="true"></span>
-                        <span>Prepare launch checklist</span>
+                        <span class="mock-task-main">
+                          <span class="mock-task-name">Prepare launch checklist</span>
+                          <span class="mock-task-meta">Taylor S. · Sep 28 · P2</span>
+                        </span>
                         <span class="tag tag-todo">Todo</span>
                       </li>
                     </ul>
@@ -158,6 +180,11 @@
                         <span class="avatar avatar-d">TS</span>
                         <span class="avatar avatar-more">+1</span>
                       </div>
+                      <ul class="mock-team-list">
+                        <li><span>Aisha K.</span><span>Lead</span></li>
+                        <li><span>Marco L.</span><span>Design</span></li>
+                        <li><span>Jules R.</span><span>Eng</span></li>
+                      </ul>
                     </div>
                     <div class="mock-panel">
                       <div class="mock-panel-head">
@@ -171,6 +198,11 @@
                           <span>Now</span>
                           <span>Launch</span>
                         </div>
+                      </div>
+                      <div class="mock-milestones">
+                        <div class="mock-milestone is-done"><span></span>Brand</div>
+                        <div class="mock-milestone is-active"><span></span>Ship</div>
+                        <div class="mock-milestone"><span></span>Launch</div>
                       </div>
                     </div>
                   </div>
@@ -247,9 +279,9 @@
           <h2 class="section-title">One system for the whole workflow.</h2>
         </div>
 
-        <figure class="mockup mockup-lg reveal" aria-label="Flowbase full workspace interface">
+        <figure class="mockup mockup-lg reveal" id="workspace-demo" aria-label="Flowbase full workspace interface">
           <div class="mockup-chrome">
-            <span class="mockup-url">app.flowbase.io / workspace</span>
+            <span class="mockup-url" id="dash-url">app.flowbase.io / atlas-launch</span>
             <span class="mockup-meta">Workspace</span>
           </div>
           <div class="mockup-body mockup-body-lg">
@@ -259,30 +291,51 @@
                 <span>Flowbase</span>
               </div>
               <p class="dash-section-label">Workspace</p>
-              <ul class="dash-nav">
-                <li class="is-active">Dashboard</li>
-                <li>Projects</li>
-                <li>My tasks</li>
-                <li>Inbox</li>
-                <li>Reports</li>
+              <ul class="dash-nav" role="list">
+                <li class="is-active" tabindex="0" role="button">Dashboard</li>
+                <li tabindex="0" role="button">Projects</li>
+                <li tabindex="0" role="button">My tasks <span class="dash-count">7</span></li>
+                <li tabindex="0" role="button">Inbox <span class="dash-count">3</span></li>
+                <li tabindex="0" role="button">Reports</li>
               </ul>
               <p class="dash-section-label">Projects</p>
-              <ul class="dash-projects">
-                <li class="is-active"><span class="dot accent" aria-hidden="true"></span>Atlas Launch</li>
-                <li><span class="dot" aria-hidden="true"></span>Q3 Roadmap</li>
-                <li><span class="dot" aria-hidden="true"></span>Customer Portal</li>
+              <ul class="dash-projects" role="list" aria-label="Select project">
+                <li class="is-active" data-project="atlas" tabindex="0" role="button">
+                  <span class="dot accent" aria-hidden="true"></span>
+                  <span class="dash-project-name">Atlas Launch</span>
+                  <span class="dash-project-pct">72%</span>
+                </li>
+                <li data-project="roadmap" tabindex="0" role="button">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="dash-project-name">Q3 Roadmap</span>
+                  <span class="dash-project-pct">41%</span>
+                </li>
+                <li data-project="portal" tabindex="0" role="button">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="dash-project-name">Customer Portal</span>
+                  <span class="dash-project-pct">58%</span>
+                </li>
               </ul>
+              <div class="dash-side-team">
+                <p class="dash-section-label">Team</p>
+                <ul class="dash-side-members" id="dash-side-members">
+                  <li><span class="avatar xs avatar-a">AK</span><span>Aisha K.</span></li>
+                  <li><span class="avatar xs avatar-b">ML</span><span>Marco L.</span></li>
+                  <li><span class="avatar xs avatar-c">JR</span><span>Jules R.</span></li>
+                  <li><span class="avatar xs avatar-d">TS</span><span>Taylor S.</span></li>
+                </ul>
+              </div>
             </aside>
 
             <div class="dash-content">
               <header class="dash-top">
                 <div>
-                  <h3 class="dash-heading">Atlas Launch</h3>
-                  <p class="dash-sub">Engineering · Due Sep 30</p>
+                  <p class="dash-heading" id="dash-heading">Atlas Launch</p>
+                  <p class="dash-sub" id="dash-sub">Engineering · Due Sep 30</p>
                 </div>
                 <div class="dash-top-actions">
-                  <span class="status-pill">On track</span>
-                  <div class="mock-avatars compact" aria-label="Team members">
+                  <span class="status-pill" id="dash-status">On track</span>
+                  <div class="mock-avatars compact" id="dash-avatars" aria-label="Team members">
                     <span class="avatar avatar-a">AK</span>
                     <span class="avatar avatar-b">ML</span>
                     <span class="avatar avatar-c">JR</span>
@@ -290,21 +343,40 @@
                 </div>
               </header>
 
+              <div class="dash-mobile-projects" aria-label="Select project">
+                <button type="button" class="dash-mobile-btn is-active" data-project="atlas">Atlas</button>
+                <button type="button" class="dash-mobile-btn" data-project="roadmap">Roadmap</button>
+                <button type="button" class="dash-mobile-btn" data-project="portal">Portal</button>
+              </div>
+
+              <div class="dash-toolbar">
+                <div class="dash-views" role="tablist" aria-label="Project view">
+                  <span class="mock-tab is-active" role="tab" aria-selected="true">List</span>
+                  <span class="mock-tab" role="tab" aria-selected="false">Board</span>
+                  <span class="mock-tab" role="tab" aria-selected="false">Timeline</span>
+                </div>
+                <div class="dash-filters" aria-hidden="true">
+                  <span class="dash-filter">Status: All</span>
+                  <span class="dash-filter">Owner: Anyone</span>
+                  <span class="dash-filter is-accent">+ Filter</span>
+                </div>
+              </div>
+
               <div class="dash-metrics">
                 <div class="metric">
-                  <span class="metric-value">72%</span>
+                  <span class="metric-value" id="dash-metric-complete">72%</span>
                   <span class="metric-label">Complete</span>
-                  <div class="metric-bar"><span class="bar-w-72"></span></div>
+                  <div class="metric-bar"><span id="dash-bar-complete" class="bar-w-72"></span></div>
                 </div>
                 <div class="metric">
-                  <span class="metric-value">18</span>
+                  <span class="metric-value" id="dash-metric-open">18</span>
                   <span class="metric-label">Open tasks</span>
-                  <div class="metric-bar"><span class="bar-w-45"></span></div>
+                  <div class="metric-bar"><span id="dash-bar-open" class="bar-w-45"></span></div>
                 </div>
                 <div class="metric">
-                  <span class="metric-value">6d</span>
-                  <span class="metric-label">Until launch</span>
-                  <div class="metric-bar accent-bar"><span class="bar-w-85"></span></div>
+                  <span class="metric-value" id="dash-metric-due">6d</span>
+                  <span class="metric-label" id="dash-metric-due-label">Until launch</span>
+                  <div class="metric-bar accent-bar"><span id="dash-bar-due" class="bar-w-85"></span></div>
                 </div>
               </div>
 
@@ -312,40 +384,53 @@
                 <table class="dash-table">
                   <thead>
                     <tr>
+                      <th scope="col" class="dash-col-check"><span class="visually-hidden">Select</span></th>
                       <th scope="col">Task</th>
                       <th scope="col">Owner</th>
+                      <th scope="col">Priority</th>
                       <th scope="col">Status</th>
                       <th scope="col">Due</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr class="is-interactive" tabindex="0">
-                      <td>Finalize brand guidelines</td>
-                      <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
-                      <td><span class="tag tag-done">Done</span></td>
-                      <td class="muted">Sep 12</td>
-                    </tr>
-                    <tr class="is-interactive is-selected" tabindex="0">
+                  <tbody id="dash-task-body">
+                    <!-- Filled by JavaScript; static fallback below -->
+                    <tr class="is-interactive is-selected" tabindex="0" data-status="progress">
+                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
                       <td>Ship landing page v2</td>
                       <td><span class="owner"><span class="avatar xs avatar-b">ML</span> Marco L.</span></td>
+                      <td><span class="prio prio-high">P1</span></td>
                       <td><span class="tag tag-progress">In progress</span></td>
                       <td class="muted">Sep 22</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0">
+                    <tr class="is-interactive" tabindex="0" data-status="done">
+                      <td><button type="button" class="task-check is-checked" aria-label="Toggle task complete" aria-pressed="true"></button></td>
+                      <td>Finalize brand guidelines</td>
+                      <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
+                      <td><span class="prio">P3</span></td>
+                      <td><span class="tag tag-done">Done</span></td>
+                      <td class="muted">Sep 12</td>
+                    </tr>
+                    <tr class="is-interactive" tabindex="0" data-status="review">
+                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
                       <td>QA onboarding flow</td>
                       <td><span class="owner"><span class="avatar xs avatar-c">JR</span> Jules R.</span></td>
+                      <td><span class="prio">P2</span></td>
                       <td><span class="tag tag-review">Review</span></td>
                       <td class="muted">Sep 24</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0">
+                    <tr class="is-interactive" tabindex="0" data-status="todo">
+                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
                       <td>Prepare launch checklist</td>
                       <td><span class="owner"><span class="avatar xs avatar-d">TS</span> Taylor S.</span></td>
+                      <td><span class="prio">P2</span></td>
                       <td><span class="tag tag-todo">Todo</span></td>
                       <td class="muted">Sep 28</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0">
+                    <tr class="is-interactive" tabindex="0" data-status="todo">
+                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
                       <td>Send partner announcements</td>
                       <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
+                      <td><span class="prio">P3</span></td>
                       <td><span class="tag tag-todo">Todo</span></td>
                       <td class="muted">Sep 29</td>
                     </tr>
@@ -354,30 +439,41 @@
               </div>
 
               <aside class="dash-activity">
-                <p class="mock-panel-head"><span>Activity</span></p>
-                <ul class="activity-list">
-                  <li>
-                    <span class="activity-dot" aria-hidden="true"></span>
-                    <div>
-                      <p><strong>Marco</strong> moved task to In progress</p>
-                      <time datetime="2026-09-25T09:12">2h ago</time>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="activity-dot" aria-hidden="true"></span>
-                    <div>
-                      <p><strong>Jules</strong> left a comment on QA flow</p>
-                      <time datetime="2026-09-25T07:40">4h ago</time>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="activity-dot" aria-hidden="true"></span>
-                    <div>
-                      <p><strong>Aisha</strong> marked guidelines as Done</p>
-                      <time datetime="2026-09-24T16:20">Yesterday</time>
-                    </div>
-                  </li>
-                </ul>
+                <div class="dash-activity-block">
+                  <p class="mock-panel-head"><span>Activity</span></p>
+                  <ul class="activity-list" id="dash-activity">
+                    <li>
+                      <span class="activity-dot" aria-hidden="true"></span>
+                      <div>
+                        <p><strong>Marco</strong> moved task to In progress</p>
+                        <time datetime="2026-09-25T09:12">2h ago</time>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="activity-dot" aria-hidden="true"></span>
+                      <div>
+                        <p><strong>Jules</strong> left a comment on QA flow</p>
+                        <time datetime="2026-09-25T07:40">4h ago</time>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="activity-dot" aria-hidden="true"></span>
+                      <div>
+                        <p><strong>Aisha</strong> marked guidelines as Done</p>
+                        <time datetime="2026-09-24T16:20">Yesterday</time>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dash-activity-block">
+                  <p class="mock-panel-head"><span>Members</span><span class="mock-meta" id="dash-member-count">4</span></p>
+                  <ul class="dash-member-list" id="dash-member-list">
+                    <li><span class="avatar xs avatar-a">AK</span><div><strong>Aisha K.</strong><span>Lead</span></div></li>
+                    <li><span class="avatar xs avatar-b">ML</span><div><strong>Marco L.</strong><span>Design</span></div></li>
+                    <li><span class="avatar xs avatar-c">JR</span><div><strong>Jules R.</strong><span>Eng</span></div></li>
+                    <li><span class="avatar xs avatar-d">TS</span><div><strong>Taylor S.</strong><span>Ops</span></div></li>
+                  </ul>
+                </div>
               </aside>
             </div>
           </div>
