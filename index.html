@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flowbase — project management for teams who want clarity, not clutter. Organize projects, tasks, and collaboration in one focused workspace." />
+  <title>Flowbase — Project management, redefined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Flowbase home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">Flowbase</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#product">Product</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="link-quiet" href="#login">Log in</a>
+        <a class="btn btn-primary btn-sm" href="#cta">Start free</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile" hidden aria-hidden="true">
+      <ul class="nav-mobile-list">
+        <li><a href="#product">Product</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#login">Log in</a></li>
+        <li><a class="btn btn-primary" href="#cta">Start free</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Project management, redefined</p>
+          <h1 class="hero-title">
+            Move work forward.<br />
+            Without the busywork.
+          </h1>
+          <p class="hero-lead">
+            Flowbase is the focused workspace for teams who plan projects,
+            assign ownership, and ship on time—without juggling five tools
+            to get there.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#cta">Start for free</a>
+            <a class="btn btn-ghost" href="#product">See how it works</a>
+          </div>
+          <p class="trust-line">No credit card required · Free for 14 days</p>
+        </div>
+
+        <div class="hero-visual reveal">
+          <figure class="mockup mockup-hero" aria-label="Flowbase project dashboard preview">
+            <div class="mockup-chrome">
+              <span class="mockup-url">app.flowbase.io / atlas-launch</span>
+              <span class="mockup-meta">Live</span>
+            </div>
+            <div class="mockup-body">
+              <aside class="mock-side" aria-hidden="true">
+                <div class="mock-side-brand">
+                  <span class="logo-mark logo-mark-sm"></span>
+                  <span>Flowbase</span>
+                </div>
+                <ul class="mock-nav">
+                  <li class="is-active">Overview</li>
+                  <li>Projects</li>
+                  <li>Tasks</li>
+                  <li>Timeline</li>
+                  <li>Team</li>
+                </ul>
+              </aside>
+              <div class="mock-main">
+                <header class="mock-main-head">
+                  <div>
+                    <p class="mock-label">Project</p>
+                    <p class="mock-title">Atlas Launch</p>
+                  </div>
+                  <div class="mock-complete" aria-label="72 percent complete">
+                    <span class="mock-complete-value">72%</span>
+                    <span class="mock-complete-label">Complete</span>
+                  </div>
+                </header>
+
+                <div class="mock-progress" role="img" aria-label="Project progress 72 percent">
+                  <div class="tl-bar"><span class="bar-w-72"></span></div>
+                </div>
+
+                <div class="mock-grid">
+                  <div class="mock-panel">
+                    <div class="mock-panel-head">
+                      <span>Tasks</span>
+                      <span class="mock-meta">8 open</span>
+                    </div>
+                    <ul class="mock-tasks">
+                      <li class="mock-task is-done">
+                        <span class="check" aria-hidden="true"></span>
+                        <span>Finalize brand guidelines</span>
+                        <span class="tag tag-done">Done</span>
+                      </li>
+                      <li class="mock-task is-active-task" tabindex="0">
+                        <span class="check" aria-hidden="true"></span>
+                        <span>Ship landing page v2</span>
+                        <span class="tag tag-progress">In progress</span>
+                      </li>
+                      <li class="mock-task" tabindex="0">
+                        <span class="check" aria-hidden="true"></span>
+                        <span>QA onboarding flow</span>
+                        <span class="tag tag-review">Review</span>
+                      </li>
+                      <li class="mock-task" tabindex="0">
+                        <span class="check" aria-hidden="true"></span>
+                        <span>Prepare launch checklist</span>
+                        <span class="tag tag-todo">Todo</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="mock-stack">
+                    <div class="mock-panel">
+                      <div class="mock-panel-head">
+                        <span>Team</span>
+                        <span class="mock-meta">5</span>
+                      </div>
+                      <div class="mock-avatars">
+                        <span class="avatar avatar-a">AK</span>
+                        <span class="avatar avatar-b">ML</span>
+                        <span class="avatar avatar-c">JR</span>
+                        <span class="avatar avatar-d">TS</span>
+                        <span class="avatar avatar-more">+1</span>
+                      </div>
+                    </div>
+                    <div class="mock-panel">
+                      <div class="mock-panel-head">
+                        <span>Timeline</span>
+                        <span class="mock-meta">Week 12</span>
+                      </div>
+                      <div class="mock-timeline" role="img" aria-label="Timeline progress through week 12">
+                        <div class="tl-bar"><span class="bar-w-72"></span></div>
+                        <div class="tl-labels">
+                          <span>Kickoff</span>
+                          <span>Now</span>
+                          <span>Launch</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof" aria-label="Trusted by">
+      <div class="container social-proof-inner">
+        <p class="social-proof-label reveal">Trusted by teams building what comes next.</p>
+        <ul class="logo-row reveal">
+          <li>Northline</li>
+          <li>Vertex Labs</li>
+          <li>Kite &amp; Co</li>
+          <li>Orbitly</li>
+          <li>Fieldwork</li>
+          <li>Signalhouse</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROBLEM / VALUE -->
+    <section class="value" id="solutions">
+      <div class="container value-grid">
+        <div class="value-left reveal">
+          <h2 class="section-title">
+            Everything your team needs.<br />
+            Nothing it doesn’t.
+          </h2>
+        </div>
+        <div class="value-right reveal">
+          <p class="section-body">
+            Scattered chats, spreadsheets, and status meetings slow teams down.
+            Flowbase replaces the noise with one precise system—so ownership
+            is clear, priorities stay visible, and execution stays fast.
+          </p>
+          <ul class="benefit-list">
+            <li>
+              <span class="benefit-marker" aria-hidden="true"></span>
+              <div>
+                <strong>One workspace</strong>
+                <p>Projects, tasks, and conversations live together.</p>
+              </div>
+            </li>
+            <li>
+              <span class="benefit-marker" aria-hidden="true"></span>
+              <div>
+                <strong>Clear ownership</strong>
+                <p>Every item has an owner, priority, and deadline.</p>
+              </div>
+            </li>
+            <li>
+              <span class="benefit-marker" aria-hidden="true"></span>
+              <div>
+                <strong>Faster execution</strong>
+                <p>Less coordination overhead. More shipping.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE -->
+    <section class="showcase" id="product">
+      <div class="container">
+        <div class="showcase-head reveal">
+          <p class="eyebrow">Product</p>
+          <h2 class="section-title">One system for the whole workflow.</h2>
+        </div>
+
+        <figure class="mockup mockup-lg reveal" aria-label="Flowbase full workspace interface">
+          <div class="mockup-chrome">
+            <span class="mockup-url">app.flowbase.io / workspace</span>
+            <span class="mockup-meta">Workspace</span>
+          </div>
+          <div class="mockup-body mockup-body-lg">
+            <aside class="dash-sidebar">
+              <div class="mock-side-brand">
+                <span class="logo-mark logo-mark-sm" aria-hidden="true"></span>
+                <span>Flowbase</span>
+              </div>
+              <p class="dash-section-label">Workspace</p>
+              <ul class="dash-nav">
+                <li class="is-active">Dashboard</li>
+                <li>Projects</li>
+                <li>My tasks</li>
+                <li>Inbox</li>
+                <li>Reports</li>
+              </ul>
+              <p class="dash-section-label">Projects</p>
+              <ul class="dash-projects">
+                <li class="is-active"><span class="dot accent" aria-hidden="true"></span>Atlas Launch</li>
+                <li><span class="dot" aria-hidden="true"></span>Q3 Roadmap</li>
+                <li><span class="dot" aria-hidden="true"></span>Customer Portal</li>
+              </ul>
+            </aside>
+
+            <div class="dash-content">
+              <header class="dash-top">
+                <div>
+                  <h3 class="dash-heading">Atlas Launch</h3>
+                  <p class="dash-sub">Engineering · Due Sep 30</p>
+                </div>
+                <div class="dash-top-actions">
+                  <span class="status-pill">On track</span>
+                  <div class="mock-avatars compact" aria-label="Team members">
+                    <span class="avatar avatar-a">AK</span>
+                    <span class="avatar avatar-b">ML</span>
+                    <span class="avatar avatar-c">JR</span>
+                  </div>
+                </div>
+              </header>
+
+              <div class="dash-metrics">
+                <div class="metric">
+                  <span class="metric-value">72%</span>
+                  <span class="metric-label">Complete</span>
+                  <div class="metric-bar"><span class="bar-w-72"></span></div>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">18</span>
+                  <span class="metric-label">Open tasks</span>
+                  <div class="metric-bar"><span class="bar-w-45"></span></div>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">6d</span>
+                  <span class="metric-label">Until launch</span>
+                  <div class="metric-bar accent-bar"><span class="bar-w-85"></span></div>
+                </div>
+              </div>
+
+              <div class="dash-table-wrap">
+                <table class="dash-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Task</th>
+                      <th scope="col">Owner</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Due</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="is-interactive" tabindex="0">
+                      <td>Finalize brand guidelines</td>
+                      <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
+                      <td><span class="tag tag-done">Done</span></td>
+                      <td class="muted">Sep 12</td>
+                    </tr>
+                    <tr class="is-interactive is-selected" tabindex="0">
+                      <td>Ship landing page v2</td>
+                      <td><span class="owner"><span class="avatar xs avatar-b">ML</span> Marco L.</span></td>
+                      <td><span class="tag tag-progress">In progress</span></td>
+                      <td class="muted">Sep 22</td>
+                    </tr>
+                    <tr class="is-interactive" tabindex="0">
+                      <td>QA onboarding flow</td>
+                      <td><span class="owner"><span class="avatar xs avatar-c">JR</span> Jules R.</span></td>
+                      <td><span class="tag tag-review">Review</span></td>
+                      <td class="muted">Sep 24</td>
+                    </tr>
+                    <tr class="is-interactive" tabindex="0">
+                      <td>Prepare launch checklist</td>
+                      <td><span class="owner"><span class="avatar xs avatar-d">TS</span> Taylor S.</span></td>
+                      <td><span class="tag tag-todo">Todo</span></td>
+                      <td class="muted">Sep 28</td>
+                    </tr>
+                    <tr class="is-interactive" tabindex="0">
+                      <td>Send partner announcements</td>
+                      <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
+                      <td><span class="tag tag-todo">Todo</span></td>
+                      <td class="muted">Sep 29</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <aside class="dash-activity">
+                <p class="mock-panel-head"><span>Activity</span></p>
+                <ul class="activity-list">
+                  <li>
+                    <span class="activity-dot" aria-hidden="true"></span>
+                    <div>
+                      <p><strong>Marco</strong> moved task to In progress</p>
+                      <time datetime="2026-09-25T09:12">2h ago</time>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="activity-dot" aria-hidden="true"></span>
+                    <div>
+                      <p><strong>Jules</strong> left a comment on QA flow</p>
+                      <time datetime="2026-09-25T07:40">4h ago</time>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="activity-dot" aria-hidden="true"></span>
+                    <div>
+                      <p><strong>Aisha</strong> marked guidelines as Done</p>
+                      <time datetime="2026-09-24T16:20">Yesterday</time>
+                    </div>
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="resources">
+      <div class="container">
+        <div class="features-head reveal">
+          <p class="eyebrow">Capabilities</p>
+          <h2 class="section-title">Built for clarity at every step.</h2>
+        </div>
+        <div class="features-grid">
+          <article class="feature reveal">
+            <span class="feature-num">01</span>
+            <h3 class="feature-title">Projects</h3>
+            <p class="feature-body">Plan and manage every project from one workspace.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature-num">02</span>
+            <h3 class="feature-title">Tasks</h3>
+            <p class="feature-body">Give every task a clear owner, priority, and deadline.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature-num">03</span>
+            <h3 class="feature-title">Collaboration</h3>
+            <p class="feature-body">Keep conversations and decisions connected to the work.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature-num">04</span>
+            <h3 class="feature-title">Analytics</h3>
+            <p class="feature-body">Understand progress with simple, useful reporting.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="stats" aria-label="Key statistics">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <p class="stat-value">12k+</p>
+          <p class="stat-label">Teams</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">48%</p>
+          <p class="stat-label">Less admin</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">3.2M</p>
+          <p class="stat-label">Tasks completed</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">99.9%</p>
+          <p class="stat-label">Uptime</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+      <div class="container testimonial-inner reveal">
+        <blockquote class="quote">
+          <p>
+            “Flowbase gave our team a single place to plan, execute, and
+            understand our work. We spend less time managing projects and
+            more time building.”
+          </p>
+          <footer class="quote-meta">
+            <span class="avatar lg avatar-e" aria-hidden="true">NS</span>
+            <div>
+              <cite class="quote-name">Nora Singh</cite>
+              <p class="quote-role">Head of Product, Vertex Labs</p>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- PRICING CTA -->
+    <section class="cta" id="cta">
+      <div class="container cta-inner reveal">
+        <p class="eyebrow">Get started</p>
+        <h2 class="cta-title" id="pricing">Your next project starts here.</h2>
+        <p class="cta-body">
+          Bring your team, projects, and priorities into one focused workspace.
+        </p>
+        <a class="btn btn-primary btn-lg" href="#cta">Start for free</a>
+        <p class="trust-line">No credit card required.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="Flowbase home">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">Flowbase</span>
+        </a>
+        <p class="footer-tagline">Project management, redefined.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Product">
+        <h3 class="footer-heading">Product</h3>
+        <ul>
+          <li><a href="#product">Features</a></li>
+          <li><a href="#solutions">Integrations</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#resources">Changelog</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Company">
+        <h3 class="footer-heading">Company</h3>
+        <ul>
+          <li><a href="#top">About</a></li>
+          <li><a href="#top">Careers</a></li>
+          <li><a href="#top">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Resources">
+        <h3 class="footer-heading">Resources</h3>
+        <ul>
+          <li><a href="#resources">Documentation</a></li>
+          <li><a href="#resources">Blog</a></li>
+          <li><a href="#resources">Help center</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Legal">
+        <h3 class="footer-heading">Legal</h3>
+        <ul>
+          <li><a href="#top">Privacy</a></li>
+          <li><a href="#top">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Flowbase. All rights reserved.</p>
+      <a class="link-quiet" id="login" href="#cta">Log in</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
