@@ -259,13 +259,8 @@ main [tabindex="-1"]:focus-visible {
 }
 
 .btn-primary:focus-visible {
-  outline-color: var(--accent);
   box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
   outline: none;
-}
-
-.btn-ghost:focus-visible {
-  outline-color: var(--ink);
 }
 
 .btn-ghost {
@@ -277,6 +272,10 @@ main [tabindex="-1"]:focus-visible {
 .btn-ghost:hover {
   background: var(--ink);
   color: var(--bg);
+}
+
+.btn-ghost:focus-visible {
+  outline-color: var(--ink);
 }
 
 .link-quiet {
@@ -738,9 +737,13 @@ main [tabindex="-1"]:focus-visible {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted-soft);
+  border: 0;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   cursor: pointer;
+  background: transparent;
+  font-family: inherit;
+  line-height: 1;
 }
 
 .mock-tab.is-active {

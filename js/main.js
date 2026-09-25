@@ -158,6 +158,10 @@
         target.setAttribute("tabindex", "-1");
       }
       target.focus({ preventScroll: true });
+
+      if (history.replaceState) {
+        history.replaceState(null, "", id);
+      }
     });
   });
 

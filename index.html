@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Flowbase — project management for teams who want clarity, not clutter. Organize projects, tasks, and collaboration in one focused workspace." />
+  <meta name="theme-color" content="#0b5fff" />
+  <meta name="color-scheme" content="light" />
   <title>Flowbase — Project management, redefined</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -21,7 +24,7 @@
       </a>
 
       <nav class="nav-desktop" aria-label="Primary">
-        <ul class="nav-list" id="nav-list-desktop">
+        <ul class="nav-list">
           <li><a href="#product" data-nav>Product</a></li>
           <li><a href="#solutions" data-nav>Solutions</a></li>
           <li><a href="#resources" data-nav>Resources</a></li>
@@ -46,7 +49,7 @@
     </div>
 
     <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile" hidden aria-hidden="true">
-      <ul class="nav-mobile-list" id="nav-list-mobile">
+      <ul class="nav-mobile-list">
         <li><a href="#product" data-nav>Product</a></li>
         <li><a href="#solutions" data-nav>Solutions</a></li>
         <li><a href="#resources" data-nav>Resources</a></li>
@@ -284,7 +287,6 @@
             <span class="mockup-url" id="dash-url">app.flowbase.io / atlas-launch</span>
             <span class="mockup-meta">Workspace</span>
           </div>
-          <p class="visually-hidden" id="dash-live" aria-live="polite" aria-atomic="true"></p>
           <div class="mockup-body mockup-body-lg">
             <aside class="dash-sidebar">
               <div class="mock-side-brand">
@@ -352,9 +354,9 @@
 
               <div class="dash-toolbar">
                 <div class="dash-views" role="tablist" aria-label="Project view">
-                  <span class="mock-tab is-active" role="tab" aria-selected="true">List</span>
-                  <span class="mock-tab" role="tab" aria-selected="false">Board</span>
-                  <span class="mock-tab" role="tab" aria-selected="false">Timeline</span>
+                  <button type="button" class="mock-tab is-active" role="tab" aria-selected="true" tabindex="0">List</button>
+                  <button type="button" class="mock-tab" role="tab" aria-selected="false" tabindex="-1">Board</button>
+                  <button type="button" class="mock-tab" role="tab" aria-selected="false" tabindex="-1">Timeline</button>
                 </div>
                 <div class="dash-filters" aria-hidden="true">
                   <span class="dash-filter">Status: All</span>
@@ -395,42 +397,42 @@
                   </thead>
                   <tbody id="dash-task-body">
                     <!-- Filled by JavaScript; static fallback below -->
-                    <tr class="is-interactive is-selected" tabindex="0" data-status="progress">
-                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
+                    <tr class="is-interactive is-selected" tabindex="0" data-status="progress" aria-selected="true">
+                      <td><button type="button" class="task-check" aria-label="Mark complete: Ship landing page v2" aria-pressed="false"></button></td>
                       <td>Ship landing page v2</td>
-                      <td><span class="owner"><span class="avatar xs avatar-b">ML</span> Marco L.</span></td>
+                      <td><span class="owner"><span class="avatar xs avatar-b" aria-hidden="true">ML</span> Marco L.</span></td>
                       <td><span class="prio prio-high">P1</span></td>
                       <td><span class="tag tag-progress">In progress</span></td>
                       <td class="muted">Sep 22</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0" data-status="done">
-                      <td><button type="button" class="task-check is-checked" aria-label="Toggle task complete" aria-pressed="true"></button></td>
+                    <tr class="is-interactive" tabindex="0" data-status="done" aria-selected="false">
+                      <td><button type="button" class="task-check is-checked" aria-label="Mark incomplete: Finalize brand guidelines" aria-pressed="true"></button></td>
                       <td>Finalize brand guidelines</td>
-                      <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
+                      <td><span class="owner"><span class="avatar xs avatar-a" aria-hidden="true">AK</span> Aisha K.</span></td>
                       <td><span class="prio">P3</span></td>
                       <td><span class="tag tag-done">Done</span></td>
                       <td class="muted">Sep 12</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0" data-status="review">
-                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
+                    <tr class="is-interactive" tabindex="0" data-status="review" aria-selected="false">
+                      <td><button type="button" class="task-check" aria-label="Mark complete: QA onboarding flow" aria-pressed="false"></button></td>
                       <td>QA onboarding flow</td>
-                      <td><span class="owner"><span class="avatar xs avatar-c">JR</span> Jules R.</span></td>
+                      <td><span class="owner"><span class="avatar xs avatar-c" aria-hidden="true">JR</span> Jules R.</span></td>
                       <td><span class="prio">P2</span></td>
                       <td><span class="tag tag-review">Review</span></td>
                       <td class="muted">Sep 24</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0" data-status="todo">
-                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
+                    <tr class="is-interactive" tabindex="0" data-status="todo" aria-selected="false">
+                      <td><button type="button" class="task-check" aria-label="Mark complete: Prepare launch checklist" aria-pressed="false"></button></td>
                       <td>Prepare launch checklist</td>
-                      <td><span class="owner"><span class="avatar xs avatar-d">TS</span> Taylor S.</span></td>
+                      <td><span class="owner"><span class="avatar xs avatar-d" aria-hidden="true">TS</span> Taylor S.</span></td>
                       <td><span class="prio">P2</span></td>
                       <td><span class="tag tag-todo">Todo</span></td>
                       <td class="muted">Sep 28</td>
                     </tr>
-                    <tr class="is-interactive" tabindex="0" data-status="todo">
-                      <td><button type="button" class="task-check" aria-label="Toggle task complete" aria-pressed="false"></button></td>
+                    <tr class="is-interactive" tabindex="0" data-status="todo" aria-selected="false">
+                      <td><button type="button" class="task-check" aria-label="Mark complete: Send partner announcements" aria-pressed="false"></button></td>
                       <td>Send partner announcements</td>
-                      <td><span class="owner"><span class="avatar xs avatar-a">AK</span> Aisha K.</span></td>
+                      <td><span class="owner"><span class="avatar xs avatar-a" aria-hidden="true">AK</span> Aisha K.</span></td>
                       <td><span class="prio">P3</span></td>
                       <td><span class="tag tag-todo">Todo</span></td>
                       <td class="muted">Sep 29</td>
@@ -479,6 +481,7 @@
             </div>
           </div>
         </figure>
+        <p class="visually-hidden" id="dash-live" aria-live="polite" aria-atomic="true"></p>
       </div>
     </section>
 
@@ -515,7 +518,8 @@
     </section>
 
     <!-- STATISTICS -->
-    <section class="stats" aria-label="Key statistics">
+    <section class="stats" aria-labelledby="stats-heading">
+      <h2 id="stats-heading" class="visually-hidden">Key statistics</h2>
       <div class="container stats-grid">
         <div class="stat reveal">
           <p class="stat-value">12k+</p>
@@ -537,8 +541,9 @@
     </section>
 
     <!-- TESTIMONIAL -->
-    <section class="testimonial">
+    <section class="testimonial" aria-labelledby="testimonial-heading">
       <div class="container testimonial-inner reveal">
+        <h2 id="testimonial-heading" class="visually-hidden">Customer testimonial</h2>
         <blockquote class="quote">
           <p>
             “Flowbase gave our team a single place to plan, execute, and
@@ -564,7 +569,7 @@
         <p class="cta-body">
           Bring your team, projects, and priorities into one focused workspace.
         </p>
-        <a class="btn btn-primary btn-lg" href="#cta">Start for free</a>
+        <a class="btn btn-primary btn-lg" href="#cta" aria-label="Start for free — no credit card required">Start for free</a>
         <p class="trust-line">No credit card required.</p>
       </div>
     </section>
