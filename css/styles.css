@@ -253,6 +253,11 @@ main [tabindex="-1"]:focus-visible {
   border-color: var(--accent);
 }
 
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
 .btn-primary:focus-visible {
   outline-color: var(--accent);
   box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
