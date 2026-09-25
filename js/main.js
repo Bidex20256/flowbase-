@@ -1,16 +1,50 @@
 /**
- * Flowbase — site interactions
+ * Flowbase — site interactions + accessibility
  */
 
 (function () {
   "use strict";
 
-  const header = document.getElementById("site-header");
-  const toggle = document.querySelector(".nav-toggle");
-  const mobileNav = document.getElementById("mobile-nav");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var header = document.getElementById("site-header");
+  var toggle = document.querySelector(".nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reduceMotion = motionQuery.matches;
+  var lastFocusBeforeMenu = null;
+
+  function prefersReducedMotion() {
+    return reduceMotion;
+  }
+
+  if (typeof motionQuery.addEventListener === "function") {
+    motionQuery.addEventListener("change", function (event) {
+      reduceMotion = event.matches;
+    });
+  } else if (typeof motionQuery.addListener === "function") {
+    motionQuery.addListener(function (event) {
+      reduceMotion = event.matches;
+    });
+  }
+
+  function activateExclusive(items, current, activeClass) {
+    Array.prototype.forEach.call(items, function (el) {
+      el.classList.remove(activeClass);
+      if (el.getAttribute("aria-pressed") !== null) {
+        el.setAttribute("aria-pressed", "false");
+      }
+    });
+    current.classList.add(activeClass);
+    if (current.getAttribute("aria-pressed") !== null) {
+      current.setAttribute("aria-pressed", "true");
+    }
+  }
 
   /* Mobile navigation ---------------------------------------------------- */
+
+  function getMenuFocusable() {
+    if (!mobileNav) return [];
+    return mobileNav.querySelectorAll('a[href], button:not([disabled])');
+  }
 
   function setMenuOpen(open) {
     if (!toggle || !mobileNav) return;
@@ -21,14 +55,28 @@
     if (header) header.classList.toggle("is-menu-open", open);
 
     if (open) {
+      lastFocusBeforeMenu = document.activeElement;
       mobileNav.removeAttribute("hidden");
       mobileNav.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      var focusable = getMenuFocusable();
+      if (focusable.length) {
+        window.setTimeout(function () {
+          focusable[0].focus();
+        }, 0);
+      }
     } else {
       mobileNav.setAttribute("hidden", "");
       mobileNav.setAttribute("aria-hidden", "true");
-    }
+      document.body.style.overflow = "";
 
-    document.body.style.overflow = open ? "hidden" : "";
+      var restore = lastFocusBeforeMenu || toggle;
+      if (restore && typeof restore.focus === "function") {
+        restore.focus();
+      }
+      lastFocusBeforeMenu = null;
+    }
   }
 
   if (toggle && mobileNav) {
@@ -43,9 +91,29 @@
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      var isOpen = toggle.getAttribute("aria-expanded") === "true";
+      if (!isOpen) return;
+
+      if (event.key === "Escape") {
+        event.preventDefault();
         setMenuOpen(false);
-        toggle.focus();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      var focusable = Array.prototype.slice.call(getMenuFocusable());
+      if (!focusable.length) return;
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     });
 
@@ -70,20 +138,20 @@
 
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener("click", function (event) {
-      const id = anchor.getAttribute("href");
+      var id = anchor.getAttribute("href");
       if (!id || id === "#") return;
 
-      const target = document.querySelector(id);
+      var target = document.querySelector(id);
       if (!target) return;
 
       event.preventDefault();
 
-      const headerOffset = header ? header.offsetHeight : 0;
-      const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 8;
+      var headerOffset = header ? header.offsetHeight : 0;
+      var top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 8;
 
       window.scrollTo({
         top: Math.max(0, top),
-        behavior: reduceMotion ? "auto" : "smooth",
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
       });
 
       if (!target.hasAttribute("tabindex")) {
@@ -93,52 +161,91 @@
     });
   });
 
+  /* Active section nav highlighting -------------------------------------- */
+
+  var sectionIds = ["product", "solutions", "resources", "pricing"];
+  var navLinks = document.querySelectorAll("[data-nav]");
+
+  function setActiveNav(id) {
+    navLinks.forEach(function (link) {
+      var href = link.getAttribute("href");
+      var match = href === "#" + id;
+      link.classList.toggle("is-active", match);
+      if (match) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  if ("IntersectionObserver" in window && navLinks.length) {
+    var sectionObserver = new IntersectionObserver(
+      function (entries) {
+        var visible = entries
+          .filter(function (entry) {
+            return entry.isIntersecting;
+          })
+          .sort(function (a, b) {
+            return b.intersectionRatio - a.intersectionRatio;
+          });
+
+        if (visible.length) {
+          setActiveNav(visible[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -50% 0px",
+        threshold: [0.1, 0.25, 0.5],
+      }
+    );
+
+    sectionIds.forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) sectionObserver.observe(section);
+    });
+  }
+
   /* Reveal on scroll ----------------------------------------------------- */
 
-  const reveals = document.querySelectorAll(".reveal");
+  var reveals = document.querySelectorAll(".reveal");
 
-  if (reduceMotion || !("IntersectionObserver" in window)) {
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
     reveals.forEach(function (el) {
       el.classList.add("is-visible");
     });
   } else {
-    const observer = new IntersectionObserver(
+    var revealObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { rootMargin: "0px 0px -6% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px -4% 0px", threshold: 0.06 }
     );
 
     reveals.forEach(function (el) {
-      observer.observe(el);
+      revealObserver.observe(el);
     });
   }
 
-  /* Dashboard micro-interactions ----------------------------------------- */
-
-  function activateExclusive(items, current, activeClass) {
-    items.forEach(function (el) {
-      el.classList.remove(activeClass);
-    });
-    current.classList.add(activeClass);
-  }
+  /* Hero mock task selection --------------------------------------------- */
 
   document.querySelectorAll(".mock-task[tabindex]").forEach(function (task) {
-    const tasks = document.querySelectorAll(".mock-task[tabindex]");
+    var tasks = document.querySelectorAll(".mock-task[tabindex]");
 
-    task.addEventListener("click", function () {
+    function selectTask() {
       activateExclusive(tasks, task, "is-active-task");
-    });
+    }
 
+    task.addEventListener("click", selectTask);
     task.addEventListener("keydown", function (event) {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        activateExclusive(tasks, task, "is-active-task");
+        selectTask();
       }
     });
   });
@@ -146,6 +253,7 @@
   /* Workspace showcase --------------------------------------------------- */
 
   var workspace = document.getElementById("workspace-demo");
+  var dashLive = document.getElementById("dash-live");
 
   var STATUS = {
     done: { label: "Done", className: "tag tag-done" },
@@ -269,11 +377,25 @@
     el.style.width = pct + "%";
   }
 
+  function announce(message) {
+    if (!dashLive) return;
+    dashLive.textContent = "";
+    window.setTimeout(function () {
+      dashLive.textContent = message;
+    }, 10);
+  }
+
   function renderAvatars(container, avatars) {
     if (!container) return;
     container.innerHTML = avatars
       .map(function (a) {
-        return '<span class="avatar avatar-' + a.tone + '">' + a.initials + "</span>";
+        return (
+          '<span class="avatar avatar-' +
+          a.tone +
+          '" aria-hidden="true">' +
+          a.initials +
+          "</span>"
+        );
       })
       .join("");
   }
@@ -284,8 +406,16 @@
         .map(function (m) {
           return (
             "<li>" +
-            '<span class="avatar xs avatar-' + m.tone + '">' + m.initials + "</span>" +
-            "<div><strong>" + m.name + "</strong><span>" + m.role + "</span></div>" +
+            '<span class="avatar xs avatar-' +
+            m.tone +
+            '" aria-hidden="true">' +
+            m.initials +
+            "</span>" +
+            "<div><strong>" +
+            m.name +
+            "</strong><span>" +
+            m.role +
+            "</span></div>" +
             "</li>"
           );
         })
@@ -296,8 +426,14 @@
         .map(function (m) {
           return (
             "<li>" +
-            '<span class="avatar xs avatar-' + m.tone + '">' + m.initials + "</span>" +
-            "<span>" + m.name + "</span>" +
+            '<span class="avatar xs avatar-' +
+            m.tone +
+            '" aria-hidden="true">' +
+            m.initials +
+            "</span>" +
+            "<span>" +
+            m.name +
+            "</span>" +
             "</li>"
           );
         })
@@ -312,8 +448,16 @@
         return (
           "<li>" +
           '<span class="activity-dot" aria-hidden="true"></span>' +
-          "<div><p><strong>" + item.who + "</strong>" + item.text + "</p>" +
-          '<time datetime="' + item.datetime + '">' + item.when + "</time></div>" +
+          "<div><p><strong>" +
+          item.who +
+          "</strong>" +
+          item.text +
+          "</p>" +
+          '<time datetime="' +
+          item.datetime +
+          '">' +
+          item.when +
+          "</time></div>" +
           "</li>"
         );
       })
@@ -329,16 +473,46 @@
         var selected = task.selected ? " is-selected" : "";
         var complete = checked ? " is-complete" : "";
         var prioClass = task.high ? "prio prio-high" : "prio";
+        var checkLabel = (checked ? "Mark incomplete: " : "Mark complete: ") + task.title;
         return (
-          '<tr class="is-interactive' + selected + complete + '" tabindex="0" data-status="' + task.status + '">' +
-          "<td><button type=\"button\" class=\"task-check" + (checked ? " is-checked" : "") +
-          "\" aria-label=\"Toggle task complete\" aria-pressed=\"" + checked + "\"></button></td>" +
-          "<td>" + task.title + "</td>" +
-          '<td><span class="owner"><span class="avatar xs avatar-' + task.tone + '">' +
-          task.initials + "</span> " + task.owner + "</span></td>" +
-          '<td><span class="' + prioClass + '">' + task.prio + "</span></td>" +
-          '<td><span class="' + st.className + '">' + st.label + "</span></td>" +
-          '<td class="muted">' + task.due + "</td>" +
+          '<tr class="is-interactive' +
+          selected +
+          complete +
+          '" tabindex="0" data-status="' +
+          task.status +
+          '" aria-selected="' +
+          String(!!task.selected) +
+          '">' +
+          "<td><button type=\"button\" class=\"task-check" +
+          (checked ? " is-checked" : "") +
+          '" aria-label="' +
+          checkLabel +
+          '" aria-pressed="' +
+          checked +
+          '"></button></td>' +
+          "<td>" +
+          task.title +
+          "</td>" +
+          '<td><span class="owner"><span class="avatar xs avatar-' +
+          task.tone +
+          '" aria-hidden="true">' +
+          task.initials +
+          "</span> " +
+          task.owner +
+          "</span></td>" +
+          '<td><span class="' +
+          prioClass +
+          '">' +
+          task.prio +
+          "</span></td>" +
+          '<td><span class="' +
+          st.className +
+          '">' +
+          st.label +
+          "</span></td>" +
+          '<td class="muted">' +
+          task.due +
+          "</td>" +
           "</tr>"
         );
       })
@@ -347,17 +521,26 @@
   }
 
   function bindTaskRows(tbody) {
+    if (!tbody) return;
     var rows = tbody.querySelectorAll(".is-interactive");
+
     rows.forEach(function (row) {
       row.addEventListener("click", function (event) {
         if (event.target.closest(".task-check")) return;
         activateExclusive(rows, row, "is-selected");
+        rows.forEach(function (r) {
+          r.setAttribute("aria-selected", String(r === row));
+        });
       });
+
       row.addEventListener("keydown", function (event) {
+        if (event.target.classList.contains("task-check")) return;
         if (event.key === "Enter" || event.key === " ") {
-          if (event.target.classList.contains("task-check")) return;
           event.preventDefault();
           activateExclusive(rows, row, "is-selected");
+          rows.forEach(function (r) {
+            r.setAttribute("aria-selected", String(r === row));
+          });
         }
       });
     });
@@ -366,9 +549,17 @@
       btn.addEventListener("click", function (event) {
         event.stopPropagation();
         var row = btn.closest("tr");
+        var titleCell = row ? row.children[1] : null;
+        var title = titleCell ? titleCell.textContent.trim() : "task";
         var done = !btn.classList.contains("is-checked");
+
         btn.classList.toggle("is-checked", done);
         btn.setAttribute("aria-pressed", String(done));
+        btn.setAttribute(
+          "aria-label",
+          (done ? "Mark incomplete: " : "Mark complete: ") + title
+        );
+
         if (row) {
           row.classList.toggle("is-complete", done);
           var tag = row.querySelector(".tag");
@@ -424,20 +615,28 @@
     document.querySelectorAll(".dash-projects li").forEach(function (item) {
       var active = item.getAttribute("data-project") === id;
       item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
       var dot = item.querySelector(".dot");
       if (dot) dot.classList.toggle("accent", active);
     });
 
     document.querySelectorAll(".dash-mobile-btn").forEach(function (btn) {
-      btn.classList.toggle("is-active", btn.getAttribute("data-project") === id);
+      var active = btn.getAttribute("data-project") === id;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", String(active));
     });
+
+    announce("Showing project " + data.name);
   }
 
   if (workspace) {
     document.querySelectorAll(".dash-projects li[data-project]").forEach(function (item) {
+      item.setAttribute("aria-pressed", item.classList.contains("is-active") ? "true" : "false");
+
       function activate() {
         loadProject(item.getAttribute("data-project"));
       }
+
       item.addEventListener("click", activate);
       item.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
@@ -469,7 +668,7 @@
     bindTaskRows(document.getElementById("dash-task-body"));
   }
 
-  /* View tabs (decorative mock UI) --------------------------------------- */
+  /* View tabs ------------------------------------------------------------ */
 
   document.querySelectorAll(".mock-toolbar, .dash-views").forEach(function (group) {
     var tabs = group.querySelectorAll(".mock-tab");
@@ -481,11 +680,13 @@
           el.classList.remove("is-active");
           if (el.getAttribute("role") === "tab") {
             el.setAttribute("aria-selected", "false");
+            el.setAttribute("tabindex", "-1");
           }
         });
         tab.classList.add("is-active");
         if (tab.getAttribute("role") === "tab") {
           tab.setAttribute("aria-selected", "true");
+          tab.setAttribute("tabindex", "0");
         }
       }
 
@@ -494,6 +695,29 @@
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           activateTab();
+          return;
+        }
+
+        if (tab.getAttribute("role") !== "tab") return;
+
+        var tabsArr = Array.prototype.slice.call(tabs);
+        var index = tabsArr.indexOf(tab);
+        var next = null;
+
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          next = tabsArr[(index + 1) % tabsArr.length];
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          next = tabsArr[(index - 1 + tabsArr.length) % tabsArr.length];
+        } else if (event.key === "Home") {
+          next = tabsArr[0];
+        } else if (event.key === "End") {
+          next = tabsArr[tabsArr.length - 1];
+        }
+
+        if (next) {
+          event.preventDefault();
+          next.focus();
+          next.click();
         }
       });
     });

@@ -138,6 +138,27 @@ table {
   outline-offset: 3px;
 }
 
+.btn:focus-visible,
+.link-quiet:focus-visible,
+.logo:focus-visible,
+.nav-toggle:focus-visible,
+.mock-tab:focus-visible,
+.dash-mobile-btn:focus-visible,
+.task-check:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Sections focused via smooth-scroll should not show a harsh outline */
+main [tabindex="-1"]:focus {
+  outline: none;
+}
+
+main [tabindex="-1"]:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
 .skip-link {
   position: absolute;
   left: var(--space-4);
@@ -232,9 +253,14 @@ table {
   border-color: var(--accent);
 }
 
-.btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+.btn-primary:focus-visible {
+  outline-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+  outline: none;
+}
+
+.btn-ghost:focus-visible {
+  outline-color: var(--ink);
 }
 
 .btn-ghost {
@@ -341,13 +367,19 @@ table {
 }
 
 .nav-list a:hover,
-.nav-list a:focus-visible {
+.nav-list a:focus-visible,
+.nav-list a.is-active {
   color: var(--ink);
 }
 
 .nav-list a:hover::after,
-.nav-list a:focus-visible::after {
+.nav-list a:focus-visible::after,
+.nav-list a.is-active::after {
   transform: scaleX(1);
+}
+
+.nav-mobile-list a.is-active {
+  color: var(--accent);
 }
 
 .header-actions {
@@ -1447,6 +1479,7 @@ table {
 
 .prio-high {
   color: var(--accent);
+  border-bottom: 1px solid var(--accent);
 }
 
 .owner {
@@ -1762,15 +1795,23 @@ table {
 
 .reveal {
   opacity: 0;
-  transform: translateY(0.75rem);
+  transform: translateY(0.5rem);
   transition:
-    opacity 0.55s var(--ease),
-    transform 0.55s var(--ease);
+    opacity 0.35s var(--ease),
+    transform 0.35s var(--ease);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ==========================================================================

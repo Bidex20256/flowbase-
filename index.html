@@ -21,11 +21,11 @@
       </a>
 
       <nav class="nav-desktop" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="#product">Product</a></li>
-          <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#resources">Resources</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+        <ul class="nav-list" id="nav-list-desktop">
+          <li><a href="#product" data-nav>Product</a></li>
+          <li><a href="#solutions" data-nav>Solutions</a></li>
+          <li><a href="#resources" data-nav>Resources</a></li>
+          <li><a href="#pricing" data-nav>Pricing</a></li>
         </ul>
       </nav>
 
@@ -46,11 +46,11 @@
     </div>
 
     <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile" hidden aria-hidden="true">
-      <ul class="nav-mobile-list">
-        <li><a href="#product">Product</a></li>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+      <ul class="nav-mobile-list" id="nav-list-mobile">
+        <li><a href="#product" data-nav>Product</a></li>
+        <li><a href="#solutions" data-nav>Solutions</a></li>
+        <li><a href="#resources" data-nav>Resources</a></li>
+        <li><a href="#pricing" data-nav>Pricing</a></li>
         <li><a href="#login">Log in</a></li>
         <li><a class="btn btn-primary" href="#cta">Start free</a></li>
       </ul>
@@ -140,7 +140,7 @@
                         </span>
                         <span class="tag tag-done">Done</span>
                       </li>
-                      <li class="mock-task is-active-task" tabindex="0">
+                      <li class="mock-task is-active-task" tabindex="0" role="button" aria-pressed="true">
                         <span class="check" aria-hidden="true"></span>
                         <span class="mock-task-main">
                           <span class="mock-task-name">Ship landing page v2</span>
@@ -148,7 +148,7 @@
                         </span>
                         <span class="tag tag-progress">In progress</span>
                       </li>
-                      <li class="mock-task" tabindex="0">
+                      <li class="mock-task" tabindex="0" role="button" aria-pressed="false">
                         <span class="check" aria-hidden="true"></span>
                         <span class="mock-task-main">
                           <span class="mock-task-name">QA onboarding flow</span>
@@ -156,7 +156,7 @@
                         </span>
                         <span class="tag tag-review">Review</span>
                       </li>
-                      <li class="mock-task" tabindex="0">
+                      <li class="mock-task" tabindex="0" role="button" aria-pressed="false">
                         <span class="check" aria-hidden="true"></span>
                         <span class="mock-task-main">
                           <span class="mock-task-name">Prepare launch checklist</span>
@@ -284,6 +284,7 @@
             <span class="mockup-url" id="dash-url">app.flowbase.io / atlas-launch</span>
             <span class="mockup-meta">Workspace</span>
           </div>
+          <p class="visually-hidden" id="dash-live" aria-live="polite" aria-atomic="true"></p>
           <div class="mockup-body mockup-body-lg">
             <aside class="dash-sidebar">
               <div class="mock-side-brand">
@@ -343,10 +344,10 @@
                 </div>
               </header>
 
-              <div class="dash-mobile-projects" aria-label="Select project">
-                <button type="button" class="dash-mobile-btn is-active" data-project="atlas">Atlas</button>
-                <button type="button" class="dash-mobile-btn" data-project="roadmap">Roadmap</button>
-                <button type="button" class="dash-mobile-btn" data-project="portal">Portal</button>
+              <div class="dash-mobile-projects" role="group" aria-label="Select project">
+                <button type="button" class="dash-mobile-btn is-active" data-project="atlas" aria-pressed="true">Atlas</button>
+                <button type="button" class="dash-mobile-btn" data-project="roadmap" aria-pressed="false">Roadmap</button>
+                <button type="button" class="dash-mobile-btn" data-project="portal" aria-pressed="false">Portal</button>
               </div>
 
               <div class="dash-toolbar">
@@ -617,7 +618,7 @@
     </div>
     <div class="container footer-bottom">
       <p>&copy; 2026 Flowbase. All rights reserved.</p>
-      <a class="link-quiet" id="login" href="#cta">Log in</a>
+      <a class="link-quiet" id="login" href="#cta" aria-label="Log in to Flowbase">Log in</a>
     </div>
   </footer>
 
