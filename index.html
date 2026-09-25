@@ -6,6 +6,9 @@
   <meta name="description" content="Flowbase — project management for teams who want clarity, not clutter. Organize projects, tasks, and collaboration in one focused workspace." />
   <meta name="theme-color" content="#0b5fff" />
   <meta name="color-scheme" content="light" />
+  <meta property="og:title" content="Flowbase — Project management, redefined" />
+  <meta property="og:description" content="Organize projects, tasks, and collaboration in one focused workspace." />
+  <meta property="og:type" content="website" />
   <title>Flowbase — Project management, redefined</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +38,7 @@
 
       <div class="header-actions">
         <a class="link-quiet" href="login.html">Log in</a>
-        <a class="btn btn-primary btn-sm" href="#cta">Start for free</a>
+        <a class="btn btn-primary btn-sm" href="login.html">Start for free</a>
         <button
           class="nav-toggle"
           type="button"
@@ -57,7 +60,7 @@
         <li><a href="#customers" data-nav>Customers</a></li>
         <li><a href="#faq" data-nav>FAQ</a></li>
         <li><a href="login.html">Log in</a></li>
-        <li><a class="btn btn-primary" href="#cta">Start for free</a></li>
+        <li><a class="btn btn-primary" href="login.html">Start for free</a></li>
       </ul>
     </nav>
   </header>
@@ -81,7 +84,7 @@
             to get there.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#cta">Start for free</a>
+            <a class="btn btn-primary" href="login.html">Start for free</a>
             <a class="btn btn-ghost" href="#product">See how it works</a>
           </div>
           <p class="trust-line">No credit card required · Free for 14 days</p>
@@ -238,6 +241,7 @@
     <section class="value" id="solutions">
       <div class="container value-grid">
         <div class="value-left reveal">
+          <p class="eyebrow">Approach</p>
           <h2 class="section-title">
             Everything your team needs.<br />
             Nothing it doesn’t.
@@ -277,11 +281,11 @@
     </section>
 
     <!-- PRODUCT SHOWCASE -->
-    <section class="showcase" id="product">
+    <section class="showcase" id="product" aria-labelledby="product-heading">
       <div class="container">
         <div class="showcase-head reveal">
           <p class="eyebrow">Product</p>
-          <h2 class="section-title">One system for the whole workflow.</h2>
+          <h2 class="section-title" id="product-heading">One system for the whole workflow.</h2>
         </div>
 
         <figure class="mockup mockup-lg reveal" id="workspace-demo" aria-label="Flowbase full workspace interface">
@@ -488,11 +492,11 @@
     </section>
 
     <!-- FEATURES -->
-    <section class="features" id="features">
+    <section class="features" id="features" aria-labelledby="features-heading">
       <div class="container">
         <div class="features-head reveal">
           <p class="eyebrow">Capabilities</p>
-          <h2 class="section-title">Built for clarity at every step.</h2>
+          <h2 class="section-title" id="features-heading">Built for clarity at every step.</h2>
         </div>
         <div class="features-grid">
           <article class="feature reveal">
@@ -757,7 +761,7 @@
               <li>Basic reporting</li>
               <li>Email support</li>
             </ul>
-            <a class="btn btn-ghost price-cta" href="#cta">Start free trial</a>
+            <a class="btn btn-ghost price-cta" href="login.html">Start for free</a>
           </article>
 
           <article class="price-card price-card-featured reveal" aria-labelledby="plan-pro">
@@ -787,7 +791,7 @@
               <li>Advanced analytics</li>
               <li>Priority support</li>
             </ul>
-            <a class="btn btn-primary price-cta" href="#cta">Start free trial</a>
+            <a class="btn btn-primary price-cta" href="login.html">Start for free</a>
           </article>
 
           <article class="price-card reveal">
@@ -816,7 +820,7 @@
               <li>Custom reporting</li>
               <li>Dedicated support</li>
             </ul>
-            <a class="btn btn-ghost price-cta" href="#cta">Contact sales</a>
+            <a class="btn btn-ghost price-cta" href="mailto:sales@flowbase.io">Contact sales</a>
           </article>
         </div>
       </div>
@@ -1061,8 +1065,8 @@
         <p class="cta-body">
           Bring your team, projects, and priorities into one focused workspace.
         </p>
-        <a class="btn btn-primary btn-lg" href="#cta" aria-label="Start for free — no credit card required">Start for free</a>
-        <p class="trust-line">No credit card required.</p>
+        <a class="btn btn-primary btn-lg" href="login.html">Start for free</a>
+        <p class="trust-line">No credit card required · Free for 14 days</p>
       </div>
     </section>
   </main>
@@ -1080,16 +1084,16 @@
         </p>
         <ul class="footer-social" aria-label="Social">
           <li>
-            <a href="https://www.linkedin.com/company/flowbase" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/flowbase" rel="noopener noreferrer" target="_blank" aria-label="Flowbase on LinkedIn (opens in new tab)">LinkedIn</a>
           </li>
           <li>
-            <a href="https://x.com/flowbase" rel="noopener noreferrer" target="_blank">X</a>
+            <a href="https://x.com/flowbase" rel="noopener noreferrer" target="_blank" aria-label="Flowbase on X (opens in new tab)">X</a>
           </li>
           <li>
-            <a href="https://github.com/flowbase" rel="noopener noreferrer" target="_blank">GitHub</a>
+            <a href="https://github.com/flowbase" rel="noopener noreferrer" target="_blank" aria-label="Flowbase on GitHub (opens in new tab)">GitHub</a>
           </li>
           <li>
-            <a href="https://www.youtube.com/@flowbase" rel="noopener noreferrer" target="_blank">YouTube</a>
+            <a href="https://www.youtube.com/@flowbase" rel="noopener noreferrer" target="_blank" aria-label="Flowbase on YouTube (opens in new tab)">YouTube</a>
           </li>
         </ul>
       </div>
@@ -1098,7 +1102,7 @@
         <nav class="footer-col" aria-label="Product">
           <h3 class="footer-heading">Product</h3>
           <ul>
-            <li><a href="#product">Product</a></li>
+            <li><a href="#product">Overview</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#customers">Customers</a></li>
@@ -1119,10 +1123,10 @@
         <nav class="footer-col" aria-label="Resources">
           <h3 class="footer-heading">Resources</h3>
           <ul>
-            <li><a href="https://docs.flowbase.io" rel="noopener noreferrer" target="_blank">Documentation</a></li>
-            <li><a href="https://blog.flowbase.io" rel="noopener noreferrer" target="_blank">Blog</a></li>
+            <li><a href="https://docs.flowbase.io" rel="noopener noreferrer" target="_blank" aria-label="Documentation (opens in new tab)">Documentation</a></li>
+            <li><a href="https://blog.flowbase.io" rel="noopener noreferrer" target="_blank" aria-label="Blog (opens in new tab)">Blog</a></li>
             <li><a href="#faq">Help center</a></li>
-            <li><a href="https://status.flowbase.io" rel="noopener noreferrer" target="_blank">Status</a></li>
+            <li><a href="https://status.flowbase.io" rel="noopener noreferrer" target="_blank" aria-label="System status (opens in new tab)">Status</a></li>
           </ul>
         </nav>
 
